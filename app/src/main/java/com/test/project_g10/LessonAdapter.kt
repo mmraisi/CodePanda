@@ -23,6 +23,7 @@ class LessonAdapter(context: Context, var dataSource: ArrayList<Lesson>):ArrayAd
             itemLessonBinding.tvLessonDuration.setText(currentLesson.duration)
             itemLessonBinding.imgBulletPoint.setImageResource(currentLesson.id_image)
 
+
             if(currentLesson.isCompleted){
                 itemLessonBinding.imgDone.visibility = View.VISIBLE
             }

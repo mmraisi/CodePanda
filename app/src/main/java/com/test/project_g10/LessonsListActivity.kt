@@ -1,8 +1,10 @@
 package com.test.project_g10
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.AdapterView
 import com.test.project_g10.databinding.ActivityLessonsListBinding
 
 class LessonsListActivity : AppCompatActivity() {
@@ -35,7 +37,12 @@ class LessonsListActivity : AppCompatActivity() {
 
         binding.lvLessons.adapter = lessonsAdapter
 
-
+        binding.lvLessons.onItemClickListener = AdapterView.OnItemClickListener {parent, view, position, id ->
+            val selectLesson = lessonsArrayList[position]
+            val intent = Intent(this, LessonDetailActivity::class.java)
+            intent.putExtra("EXTRA_LESSON", selectLesson)
+            startActivity(intent)
+        }
 
     }
 }

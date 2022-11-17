@@ -2,7 +2,7 @@ package com.test.project_g10
 
 import java.io.Serializable
 
-class Lesson(var id:Int, var title:String, var duration:String, var isCompleted:Boolean, var videoURL:String, var notes:String): Serializable {
+class Lesson(var id:Int, var title:String, var duration:String, var lessonInfo:String, var isCompleted:Boolean, var videoURL:String, var notes:String): Serializable {
 
     var id_image:Int
     init {

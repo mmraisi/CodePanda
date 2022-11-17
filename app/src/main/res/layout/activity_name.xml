@@ -16,15 +16,17 @@
         android:layout_marginTop="50dp"
         />
     <EditText
+        android:id="@+id/edt_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Enter your name"
         android:paddingHorizontal="85dp"
-
         android:layout_marginTop="35dp"
+        android:inputType="textPersonName"
         android:layout_gravity="center"/>
 
     <Button
+        android:id="@+id/btn_save_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CONTINUE"

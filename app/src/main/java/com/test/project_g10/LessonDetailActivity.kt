@@ -7,6 +7,8 @@ import java.io.Serializable
 
 class LessonDetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityLessonDetailBinding
+    var TAG = this@LessonDetailActivity.toString()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLessonDetailBinding.inflate(layoutInflater)

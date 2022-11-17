@@ -19,5 +19,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView((binding.root))
 
+        val intent = Intent(this, LessonsListActivity::class.java)
+        // run the list of activities
+        startActivity(intent)
+
     }
 }

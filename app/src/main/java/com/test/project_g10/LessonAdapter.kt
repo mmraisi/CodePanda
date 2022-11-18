@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
 import com.test.project_g10.databinding.ItemLessonListBinding
 
 
@@ -13,8 +14,7 @@ class LessonAdapter(context: Context, var dataSource: ArrayList<Lesson>):ArrayAd
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val currentLesson = getItem(position)
 
-        lateinit var itemLessonBinding:ItemLessonListBinding
-        itemLessonBinding = ItemLessonListBinding.inflate(LayoutInflater.from(context), parent, false)
+        var itemLessonBinding = ItemLessonListBinding.inflate(LayoutInflater.from(context), parent, false)
 
         var itemView = itemLessonBinding.root
 

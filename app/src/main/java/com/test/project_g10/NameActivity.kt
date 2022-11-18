@@ -1,6 +1,7 @@
 package com.test.project_g10
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,17 +10,15 @@ import com.test.project_g10.databinding.ActivityNameBinding
 class NameActivity : AppCompatActivity() {
 
     lateinit var binding:ActivityNameBinding
-    lateinit var dataSource: DataSource
     var TAG = this@NameActivity.toString()
+    lateinit var sharedPrefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNameBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        dataSource = DataSource.getInstance()
-
-        Log.d(TAG, "Username: ${dataSource.username}")
+        sharedPrefs = this.getSharedPreferences("com_test_g10_PREFS_LESSONS", MODE_PRIVATE)
 
         binding.btnSaveName.setOnClickListener {
             val nameFromNameScreen = binding.edtName.text.toString()
@@ -27,9 +26,9 @@ class NameActivity : AppCompatActivity() {
             val isValidName = validateUsername(nameFromNameScreen)
 
             if(isValidName){
-                dataSource.username = nameFromNameScreen
-                Log.d(TAG, "Username: ${dataSource.username}")
-                val intent = Intent(this, WelcomeScreenActivity::class.java)
+
+                addUsernameToPref(nameFromNameScreen)
+                val intent = Intent(this, LessonsListActivity::class.java)
                 startActivity(intent)
             }
             else{
@@ -43,10 +42,9 @@ class NameActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        dataSource = DataSource.getInstance()
         Log.d(TAG, "onStart:  pressed")
-        if(dataSource.username.isNotBlank()){
-            val intent = Intent(this, LessonsListActivity::class.java)
+        if(checkIfNameExists()){
+            val intent = Intent(this, WelcomeScreenActivity::class.java)
             startActivity(intent)
         }
     }
@@ -62,5 +60,24 @@ class NameActivity : AppCompatActivity() {
             }
         }
         return true
+    }
+
+    private fun addUsernameToPref(username:String) {
+        with(sharedPrefs.edit()) {
+            // write to sharedPreferences
+            putString("USERNAME", username) // key value pair
+            apply() // async action
+        }
+    }
+
+    private fun checkIfNameExists():Boolean {
+        return if (sharedPrefs.contains("USERNAME")) {
+            val username = sharedPrefs.getString("USERNAME", "")
+            username?.isNotBlank() ?: false
+
+        } else{
+            false
+        }
+
     }
 }

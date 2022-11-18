@@ -29,7 +29,7 @@ class NameActivity : AppCompatActivity() {
             if(isValidName){
                 dataSource.username = nameFromNameScreen
                 Log.d(TAG, "Username: ${dataSource.username}")
-                val intent = Intent(this, LessonsListActivity::class.java)
+                val intent = Intent(this, WelcomeScreenActivity::class.java)
                 startActivity(intent)
             }
             else{

@@ -44,6 +44,11 @@ class LessonDetailActivity : AppCompatActivity() {
                 binding.edtNotes.setText(selectedLesson.notes)
             }
 
+            binding.btnWatchLesson.setOnClickListener {
+                val webview = binding.wvVideoPlayer
+                webview.settings.javaScriptEnabled = true
+                webview.loadUrl(selectedLesson.videoURL)
+            }
 
             binding.btnSaveNotes.setOnClickListener {
                 val notesFromUser = binding.edtNotes.text.toString()

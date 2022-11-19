@@ -27,6 +27,8 @@ class DataSource {
 
     var lessonsArrayList:ArrayList<Lesson> = arrayListOf()
 
+    var selectedLessonPosition:Int? = null
+
 
     // put any functions / operations you want to perform on data in the singleton here
 

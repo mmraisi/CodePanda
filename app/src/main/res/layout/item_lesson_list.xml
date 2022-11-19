@@ -9,12 +9,14 @@
         android:id="@+id/img_bullet_point"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:src="@drawable/bullet_point_icon"
+        android:src="@drawable/one"
         android:layout_margin="8dp" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_weight="0.8"
         android:orientation="vertical">
 
         <TextView
@@ -36,12 +38,11 @@
 
     <ImageView
         android:id="@+id/img_done"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/done_icon"
-        android:visibility="invisible"
-        android:layout_marginTop="10dp"
-        android:paddingStart="50dp"
+        android:visibility="gone"
+        android:layout_margin="8dp"
         />
 
 

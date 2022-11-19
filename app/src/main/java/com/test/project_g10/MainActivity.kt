@@ -9,9 +9,10 @@ import android.util.Log
 import androidx.core.os.HandlerCompat.postDelayed
 import androidx.core.os.postDelayed
 import com.test.project_g10.databinding.ActivityMainBinding
+import kotlin.text.Typography.less
 
 class MainActivity : AppCompatActivity() {
-     val TAG = this@MainActivity.toString()
+    val TAG = this@MainActivity.toString()
 
     lateinit var binding: ActivityMainBinding
     lateinit var sharedPrefs: SharedPreferences
@@ -22,56 +23,75 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView((binding.root))
-        sharedPrefs = this.getSharedPreferences("com_test_g10_PREFS_LESSONS", MODE_PRIVATE)
 
     }
 
     override fun onStart() {
         super.onStart()
+        dataSource = DataSource.getInstance()
+        sharedPrefs = this.getSharedPreferences("com_test_g10_PREFS_LESSONS", MODE_PRIVATE)
 
         Log.d(TAG, "onStart from main screen:  pressed")
 
-        if(checkIfNameExists()){
+        if (checkIfNameExists()) {
             fillDataSource() // fill the data source
             val intent = Intent(this, WelcomeScreenActivity::class.java)
             startActivity(intent)
-        }
-        else{
+        } else {
             val intent = Intent(this, NameActivity::class.java)
             startActivity(intent)
         }
     }
 
-    private fun checkIfNameExists():Boolean {
+    private fun checkIfNameExists(): Boolean {
         return if (sharedPrefs.contains("USERNAME")) {
             val username = sharedPrefs.getString("USERNAME", "")
             username?.isNotBlank() ?: false
 
-        } else{
+        } else {
             false
         }
 
     }
 
     private fun getCompletedClasses(): MutableSet<String>? {
-        return if(sharedPrefs.contains("COMPLETED_CLASSES")){
-            sharedPrefs.getStringSet("test", null)
-        } else{
+        return if (sharedPrefs.contains("COMPLETED_CLASSES")) {
+            sharedPrefs.getStringSet("COMPLETED_CLASSES", null)
+        } else {
             null
         }
     }
 
     private fun fillDataSource() {
-        dataSource = DataSource.getInstance()
         with(sharedPrefs.edit()) {
             // write to sharedPreferences
-            val completedClasses:MutableSet<String>? = getCompletedClasses()
+            val completedClasses: MutableSet<String>? = getCompletedClasses()
 
-            if(completedClasses != null){
-                for(id in completedClasses){
-                    dataSource.lessonsArrayList[id.toInt()].isCompleted = true
+            val classesNotes:  MutableSet<String>? = getclasssNotes()
+
+            if (completedClasses != null) {
+
+                for (lesson in dataSource.lessonsArrayList) {
+                    if (lesson.id.toString() in completedClasses) {
+                        lesson.isCompleted = true
+                    }
+
                 }
             }
+
+            if(classesNotes != null){
+                for ((i, note) in classesNotes.withIndex()) {
+                    dataSource.lessonsArrayList[i].notes = note
+                }
+            }
+        }
+    }
+
+    private fun getclasssNotes() : MutableSet<String>? {
+        return if (sharedPrefs.contains("CLASSES_NOTES")) {
+            sharedPrefs.getStringSet("CLASSES_NOTES", null)
+        } else {
+            null
         }
     }
 }

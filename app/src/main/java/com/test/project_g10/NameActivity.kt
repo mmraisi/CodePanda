@@ -18,6 +18,11 @@ class NameActivity : AppCompatActivity() {
         binding = ActivityNameBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+
         sharedPrefs = this.getSharedPreferences("com_test_g10_PREFS_LESSONS", MODE_PRIVATE)
 
         binding.btnSaveName.setOnClickListener {
@@ -38,10 +43,6 @@ class NameActivity : AppCompatActivity() {
 
         }
 
-    }
-
-    override fun onStart() {
-        super.onStart()
         Log.d(TAG, "onStart:  pressed")
         if(checkIfNameExists()){
             val intent = Intent(this, WelcomeScreenActivity::class.java)

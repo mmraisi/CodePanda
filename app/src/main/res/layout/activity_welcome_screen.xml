@@ -77,14 +77,14 @@
         android:layout_marginTop="80dp"
         />
 
-    <Button
-        android:id="@+id/btn_delete_all"
+    <TextView
+        android:id="@+id/lv_delete_all"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:text="Delete all data and reset"
         android:textSize="18sp"
         android:textColor="#0000ff"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="center"
         android:gravity="bottom"
         android:layout_margin="8dp"
         />

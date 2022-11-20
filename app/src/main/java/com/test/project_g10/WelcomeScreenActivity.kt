@@ -69,5 +69,12 @@ class WelcomeScreenActivity : AppCompatActivity() {
             dataSource.reset()
             finish()
         }
+
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        this.finishAffinity();
     }
 }

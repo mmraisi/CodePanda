@@ -1,48 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="8dp">
 
     <ImageView
         android:id="@+id/img_bullet_point"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:src="@drawable/one"
-        android:layout_margin="8dp" />
+        android:layout_marginRight="15dp"
+        />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:orientation="vertical"
         android:layout_weight="0.8"
-        android:orientation="vertical">
+        >
 
         <TextView
             android:id="@+id/tv_lesson_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:textColor="@color/black"
-            android:text="Introduction to the course" />
+            android:textColor="#494949"
+            android:text="Introduction to the course"
+            android:textSize="20sp"
+            android:layout_marginBottom="5dp"/>
         <TextView
             android:id="@+id/tv_lesson_duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:textColor="@color/black"
-            android:text="Length: 12 min" />
+            android:textColor="#494949"
+            android:text="Length: 12 min"
+            android:textSize="16sp"/>
 
     </LinearLayout>
 
     <ImageView
         android:id="@+id/img_done"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/done_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/done"
         android:visibility="gone"
-        android:layout_margin="8dp"
         />
 
 

@@ -12,30 +12,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="3. Variables and Conditionals"
-        android:textSize="22sp"
+        android:textSize="25sp"
         android:textStyle="bold"
+        android:textColor="#F16F64"
         android:gravity="center_horizontal"
-        android:layout_margin="8dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
         />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:layout_margin="8dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="10dp"
         >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Length: "
-            android:textSize="18sp"
+            android:textSize="20sp"
+            android:textColor="#494949"
             />
         <TextView
             android:id="@+id/tv_lesson_duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1 hour 20 min"
-            android:textSize="18sp"
+            android:textSize="20sp"
+            android:textColor="#494949"
             />
     </LinearLayout>
 
@@ -43,18 +49,26 @@
         android:id="@+id/tv_lesson_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="In this module you will learn about variable and conditionals. hjdgskg kajshgk jsgfk jgskjfgjGF IEGFKJHGDJKGJFJKGAKGCJJFYtdb fjdhbjgygfmnbjehl ufef glefjl ekjfkshfkslifiey"
-        android:textSize="15sp"
-        android:layout_margin="10dp"
-        android:lineHeight="20dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pretium sollicitudin risus. Etiam et bibendum dui."
+        android:textSize="18sp"
+        android:textColor="#494949"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="25dp"
         />
 
     <Button
         android:id="@+id/btn_watch_lesson"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="watch lesson"
-        android:layout_gravity="center_horizontal"
+        android:text="Watch lesson"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:paddingHorizontal="50dp"
+        android:paddingVertical="5dp"
+        android:background="@drawable/button_background"
+        app:backgroundTint="@null"
+        android:layout_marginBottom="20dp"
         />
 
     <WebView
@@ -69,8 +83,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Take notes:"
-        android:textSize="15sp"
-        android:layout_margin="8dp"
+        android:textSize="20sp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="5dp"
         />
 
     <EditText
@@ -78,18 +93,23 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:inputType="textMultiLine"
-        android:layout_margin="8dp"
-        android:hint="notes"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="5dp"
+        android:hint="Type your notes here"
         android:gravity="top"
         />
 
-    <Button
+    <TextView
         android:id="@+id/btn_save_notes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save notes"
+        android:text="SAVE NOTES"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#F16F64"
         android:layout_gravity="right"
-        android:layout_margin="8dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="40dp"
         />
 
     <Button
@@ -97,8 +117,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mark complete"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="8dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:paddingHorizontal="50dp"
+        android:paddingVertical="5dp"
+        android:background="@drawable/button_background"
+        app:backgroundTint="@null"
         />
 
 </LinearLayout>

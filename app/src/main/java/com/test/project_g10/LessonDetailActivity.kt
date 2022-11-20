@@ -21,8 +21,6 @@ class LessonDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLessonDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
     }
 
     override fun onStart() {

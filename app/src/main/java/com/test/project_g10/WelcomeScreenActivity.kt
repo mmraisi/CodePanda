@@ -61,12 +61,14 @@ class WelcomeScreenActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.lvDeleteAll.setOnClickListener {
+        binding.tvDeleteAll.setOnClickListener {
             with(sharedPrefs.edit()) {
                 clear() // to delete all the keys
                 apply()
             }
             dataSource.reset()
+            val intent = Intent(this, NameActivity::class.java)
+            startActivity(intent)
             finish()
         }
 

@@ -13,6 +13,7 @@ import kotlin.text.Typography.less
 
 class MainActivity : AppCompatActivity() {
     val TAG = this@MainActivity.toString()
+    private val SPLASH_TIME_OUT:Long = 3000 // 1 sec
 
     lateinit var binding: ActivityMainBinding
     lateinit var sharedPrefs: SharedPreferences
@@ -33,15 +34,24 @@ class MainActivity : AppCompatActivity() {
         sharedPrefs = this.getSharedPreferences("com_test_g10_PREFS_LESSONS", MODE_PRIVATE)
 
         Log.d(TAG, "onStart from main screen:  pressed")
+        Handler().postDelayed({
+            // This method will be executed once the timer is over
+            // Start your app main activity
 
-        if (checkIfNameExists()) {
-            fillDataSource() // fill the data source
-            val intent = Intent(this, WelcomeScreenActivity::class.java)
-            startActivity(intent)
-        } else {
-            val intent = Intent(this, NameActivity::class.java)
-            startActivity(intent)
-        }
+            if (checkIfNameExists()) {
+                fillDataSource() // fill the data source
+                val intent = Intent(this, WelcomeScreenActivity::class.java)
+                startActivity(intent)
+            } else {
+                val intent = Intent(this, NameActivity::class.java)
+                startActivity(intent)
+            }
+
+            // close this activity
+            finish()
+        }, SPLASH_TIME_OUT)
+
+
     }
 
     private fun checkIfNameExists(): Boolean {

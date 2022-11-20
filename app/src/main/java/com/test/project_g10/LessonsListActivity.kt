@@ -73,7 +73,10 @@ class LessonsListActivity : AppCompatActivity() {
 
             }
 
-        binding.swSequential
 
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        this.finishAffinity();
     }
 }

@@ -100,19 +100,12 @@ class LessonDetailActivity : AppCompatActivity() {
         }
     }
     private fun addNotesToPrefs(){
-        var notesFromPrefs:MutableSet<String>? = sharedPrefs.getStringSet("CLASSES_NOTES", null)
-        if (notesFromPrefs != null) {
-            notesFromPrefs.add(binding.edtNotes.text.toString())
-        }
-        else{
-            notesFromPrefs = mutableSetOf(binding.edtNotes.text.toString())
-        }
+
+        val prefStringName = "Note_${selectedLesson.id}"
 
         with(sharedPrefs.edit()) {
             // write to sharedPreferences
-            remove("CLASSES_NOTES")
-            apply()
-            putStringSet("CLASSES_NOTES", notesFromPrefs) // key value pair
+            putString(prefStringName, binding.edtNotes.text.toString()) // key value pair
             apply()
         }
     }

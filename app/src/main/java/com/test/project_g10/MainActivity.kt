@@ -67,8 +67,6 @@ class MainActivity : AppCompatActivity() {
             // write to sharedPreferences
             val completedClasses: MutableSet<String>? = getCompletedClasses()
 
-            val classesNotes:  MutableSet<String>? = getclasssNotes()
-
             if (completedClasses != null) {
 
                 for (lesson in dataSource.lessonsArrayList) {
@@ -79,19 +77,12 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            if(classesNotes != null){
-                for ((i, note) in classesNotes.withIndex()) {
-                    dataSource.lessonsArrayList[i].notes = note
+            for (lesson in dataSource.lessonsArrayList){
+                val note:String? = sharedPrefs.getString("Note_${lesson.id}", null)
+                if(note != null){
+                    lesson.notes = note
                 }
             }
-        }
-    }
-
-    private fun getclasssNotes() : MutableSet<String>? {
-        return if (sharedPrefs.contains("CLASSES_NOTES")) {
-            sharedPrefs.getStringSet("CLASSES_NOTES", null)
-        } else {
-            null
         }
     }
 }

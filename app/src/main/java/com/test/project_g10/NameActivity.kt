@@ -23,7 +23,7 @@ class NameActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        sharedPrefs = this.getSharedPreferences("com_test_g10_PREFS_LESSONS", MODE_PRIVATE)
+        sharedPrefs = this.getSharedPreferences(resources.getString(R.string.SHARED_PREFS_FILE_KEY), MODE_PRIVATE)
 
         binding.btnSaveName.setOnClickListener {
             val nameFromNameScreen = binding.edtName.text.toString()
@@ -37,7 +37,7 @@ class NameActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             else{
-                binding.edtName.error = "Please insert a valid name"
+                binding.edtName.error = resources.getString(R.string.edtName_Error)
             }
 
 
@@ -66,14 +66,14 @@ class NameActivity : AppCompatActivity() {
     private fun addUsernameToPref(username:String) {
         with(sharedPrefs.edit()) {
             // write to sharedPreferences
-            putString("USERNAME", username) // key value pair
+            putString(resources.getString(R.string.PREFS_USERNAME), username) // key value pair
             apply() // async action
         }
     }
 
     private fun checkIfNameExists():Boolean {
-        return if (sharedPrefs.contains("USERNAME")) {
-            val username = sharedPrefs.getString("USERNAME", "")
+        return if (sharedPrefs.contains(resources.getString(R.string.PREFS_USERNAME))) {
+            val username = sharedPrefs.getString(resources.getString(R.string.PREFS_USERNAME), "")
             username?.isNotBlank() ?: false
 
         } else{

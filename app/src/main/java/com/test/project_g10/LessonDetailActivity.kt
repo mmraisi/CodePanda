@@ -26,7 +26,7 @@ class LessonDetailActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         dataSource = DataSource.getInstance()
-        sharedPrefs = this.getSharedPreferences("com_test_g10_PREFS_LESSONS", MODE_PRIVATE)
+        sharedPrefs = this.getSharedPreferences(resources.getString(R.string.SHARED_PREFS_FILE_KEY), MODE_PRIVATE)
 
         val selectedLessonPosition = dataSource.selectedLessonPosition
 
@@ -54,6 +54,13 @@ class LessonDetailActivity : AppCompatActivity() {
                 if(notesFromUser.isNotBlank()){
                     selectedLesson.notes = notesFromUser
                     addNotesToPrefs()
+                    t?.cancel()
+                    t = Toast.makeText(
+                        this@LessonDetailActivity,
+                        "Notes Saved",
+                        Toast.LENGTH_SHORT
+                    )
+                    t?.show()
                 }
                 else{
                     t?.cancel()
@@ -78,7 +85,7 @@ class LessonDetailActivity : AppCompatActivity() {
 
     private fun addCompletedClass(){
 
-        var completedClasses:MutableSet<String>? = sharedPrefs.getStringSet("COMPLETED_CLASSES", null)
+        var completedClasses:MutableSet<String>? = sharedPrefs.getStringSet(resources.getString(R.string.PREFS_COMPLETED_CLASSES), null)
 
         Log.d(TAG, "CompletedClass: $completedClasses")
 
@@ -91,20 +98,25 @@ class LessonDetailActivity : AppCompatActivity() {
         Log.d(TAG, "CompletedClass: $completedClasses")
         with(sharedPrefs.edit()) {
             // write to sharedPreferences
-            remove("COMPLETED_CLASSES")
+            remove(resources.getString(R.string.PREFS_COMPLETED_CLASSES))
             apply()
-            putStringSet("COMPLETED_CLASSES", completedClasses) // key value pair
+            putStringSet(resources.getString(R.string.PREFS_COMPLETED_CLASSES), completedClasses) // key value pair
             apply()
         }
     }
     private fun addNotesToPrefs(){
 
-        val prefStringName = "Note_${selectedLesson.id}"
+        val prefStringName = "${resources.getString(R.string.PREFS_NOTE)}${selectedLesson.id}" //Note_id
 
         with(sharedPrefs.edit()) {
             // write to sharedPreferences
             putString(prefStringName, binding.edtNotes.text.toString()) // key value pair
             apply()
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        t?.cancel() // cancel any toasts if exists
     }
 }

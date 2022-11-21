@@ -1,3 +1,35 @@
 <resources>
-    <string name="app_name">Project-G10</string>
+    <string name="app_name">CodePanda</string>
+    <string name="app_launch_desc">Learn to code with us!</string>
+    <string name="lessons_header_title">Learning HTML and CSS</string>
+    <string name="sequential_desc">Force Sequential Progression?</string>
+    <string name="what_s_your_name">What\'s your name?</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="btn_continue">CONTINUE</string>
+    <string name="welcome_back_name">Welcome back, Peter</string>
+    <string name="completed_classes_desc">You have completed 25% of the course</string>
+    <string name="lessons_completed_desc">Lesson completed:</string>
+    <string name="lessons_completed_value">2</string>
+    <string name="lessons_remaining">Lessons remaining:</string>
+    <string name="lessons_remaining_value">2</string>
+    <string name="delete_all_data_and_reset">Delete all data and reset</string>
+    <string name="course_title">Introduction to the course</string>
+    <string name="course_duration">Length: 12 min</string>
+    <string name="course_title_numbered">3. Variables and Conditionals</string>
+    <string name="courses_length">Length: </string>
+    <string name="course_length_value">1 hour 20 min</string>
+    <string name="course_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pretium sollicitudin risus. Etiam et bibendum dui.</string>
+    <string name="watch_lesson">Watch lesson</string>
+    <string name="take_notes">Take notes:</string>
+    <string name="type_your_notes_here">Type your notes here</string>
+    <string name="btn_save_notes">SAVE NOTES</string>
+    <string name="btn_mark_complete">Mark complete</string>
+    <string name="SHARED_PREFS_FILE_KEY">com_test_g10_PREFS_LESSONS</string>
+    <string name="PREFS_COMPLETED_CLASSES">COMPLETED_CLASSES</string>
+    <string name="PREFS_NOTE">Note_</string>
+    <string name="PREFS_USERNAME">Note_</string>
+    <string name="edtName_Error">Please insert a valid name</string>
+    <string name="welcome_back">Welcome back</string>
+    <string name="you_have_completed">You have completed</string>
+    <string name="of_the_course">of the course</string>
 </resources>

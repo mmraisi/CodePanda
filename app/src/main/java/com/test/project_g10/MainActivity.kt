@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
 
         dataSource = DataSource.getInstance()
-        sharedPrefs = this.getSharedPreferences("com_test_g10_PREFS_LESSONS", MODE_PRIVATE)
+        sharedPrefs = this.getSharedPreferences(resources.getString(R.string.SHARED_PREFS_FILE_KEY), MODE_PRIVATE)
 
         Log.d(TAG, "onStart from main screen:  pressed")
         Handler().postDelayed({
@@ -55,8 +55,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkIfNameExists(): Boolean {
-        return if (sharedPrefs.contains("USERNAME")) {
-            val username = sharedPrefs.getString("USERNAME", "")
+        return if (sharedPrefs.contains(resources.getString(R.string.PREFS_USERNAME))) {
+            val username = sharedPrefs.getString(resources.getString(R.string.PREFS_USERNAME), "")
             username?.isNotBlank() ?: false
 
         } else {
@@ -66,8 +66,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getCompletedClasses(): MutableSet<String>? {
-        return if (sharedPrefs.contains("COMPLETED_CLASSES")) {
-            sharedPrefs.getStringSet("COMPLETED_CLASSES", null)
+        return if (sharedPrefs.contains(resources.getString(R.string.PREFS_COMPLETED_CLASSES))) {
+            sharedPrefs.getStringSet(resources.getString(R.string.PREFS_COMPLETED_CLASSES), null)
         } else {
             null
         }
@@ -75,7 +75,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun fillDataSource() {
         with(sharedPrefs.edit()) {
-            // write to sharedPreferences
+
+            val username = sharedPrefs.getString(resources.getString(R.string.PREFS_USERNAME), "")
+            dataSource.username = if(username?.isNotBlank() == true) username else ""
+
             val completedClasses: MutableSet<String>? = getCompletedClasses()
 
             if (completedClasses != null) {
@@ -89,7 +92,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             for (lesson in dataSource.lessonsArrayList){
-                val note:String? = sharedPrefs.getString("Note_${lesson.id}", null)
+                val note:String? = sharedPrefs.getString("${resources.getString(R.string.PREFS_NOTE)}${lesson.id}", null) // Note_id
                 if(note != null){
                     lesson.notes = note
                 }

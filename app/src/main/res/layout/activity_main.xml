@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Codepanda"
+        android:text="@string/app_name"
         android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="@color/white"
@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Learn to code with us!"
+        android:text="@string/app_launch_desc"
         android:textSize="25sp"
         android:textStyle="italic"
         android:textColor="@color/white"

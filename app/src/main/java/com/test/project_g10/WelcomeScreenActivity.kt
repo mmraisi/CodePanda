@@ -11,7 +11,7 @@ import android.view.ActionMode
 import com.test.project_g10.databinding.ActivityWelcomeScreenBinding
 
 class WelcomeScreenActivity : AppCompatActivity() {
-    lateinit var binding:ActivityWelcomeScreenBinding
+    lateinit var binding: ActivityWelcomeScreenBinding
     lateinit var sharedPrefs: SharedPreferences
     lateinit var dataSource: DataSource
 
@@ -19,42 +19,41 @@ class WelcomeScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityWelcomeScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
     }
 
     @SuppressLint("SetTextI18n")
     override fun onStart() {
         super.onStart()
-        sharedPrefs = this.getSharedPreferences("com_test_g10_PREFS_LESSONS", MODE_PRIVATE)
+        sharedPrefs = this.getSharedPreferences(resources.getString(R.string.SHARED_PREFS_FILE_KEY), MODE_PRIVATE)
         dataSource = DataSource.getInstance()
 
-        // Get username from shared prefs
-        val username = sharedPrefs.getString("USERNAME", "")
-        binding.tvWelcomeName.setText("Welcome back, $username")
+        // Get username from dataSource
+        val username = dataSource.username
+        binding.tvWelcomeName.text = "${resources.getString(R.string.welcome_back)}, $username"
 
-        //Get completed classes from shared prefs
-        val completedClasses:MutableSet<String>? = sharedPrefs.getStringSet("COMPLETED_CLASSES", null)
+        //Get completed classes from dataSource
+        var numberOfCompletedClasses: Int = 0
+
+        for (lesson in dataSource.lessonsArrayList) {
+            if (lesson.isCompleted) {
+                numberOfCompletedClasses++
+            }
+        }
 
         // Total no of classes in data source
         val totalClass = dataSource.lessonsArrayList.size
 
         //Calculate percentage of completed classes
-        val completedPercentage = (100 / totalClass) * (completedClasses?.size ?: 0)
-        binding.tvCompletePercentage.setText("You have completed $completedPercentage% of the course")
+        val completedPercentage = (100 / totalClass) * (numberOfCompletedClasses)
+        binding.tvCompletePercentage.setText("${resources.getString(R.string.you_have_completed)} $completedPercentage% ${resources.getString(R.string.of_the_course)}")
 
         //Set completed classes
-        if (completedClasses != null) {
-            binding.tvCompleted.setText(completedClasses.size.toString())
-        }
-        else {
-            binding.tvCompleted.setText("0")
-        }
+        binding.tvCompleted.text = numberOfCompletedClasses.toString()
 
 
         //Calculate remaining classes
-        var remainingClasses = totalClass - (completedClasses?.size ?: 0)
-        binding.tvRemaining.setText(remainingClasses.toString())
+        var remainingClasses = totalClass - numberOfCompletedClasses
+        binding.tvRemaining.text = remainingClasses.toString()
 
         binding.btnContinue.setOnClickListener {
             val intent = Intent(this, LessonsListActivity::class.java)
@@ -69,7 +68,6 @@ class WelcomeScreenActivity : AppCompatActivity() {
             dataSource.reset()
             val intent = Intent(this, NameActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
 

@@ -75,6 +75,12 @@ class LessonsListActivity : AppCompatActivity() {
 
 
     }
+
+    override fun onPause() {
+        super.onPause()
+        t?.cancel() // cancel any toasts if exists
+    }
+    
     override fun onBackPressed() {
         super.onBackPressed()
         this.finishAffinity();

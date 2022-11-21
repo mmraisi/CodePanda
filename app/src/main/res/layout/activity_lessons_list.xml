@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Learning HTML and CSS"
+        android:text="@string/lessons_header_title"
         android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="#494949"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.9"
             android:textColor="#494949"
-            android:text="Force Sequential Progression?"
+            android:text="@string/sequential_desc"
             android:textSize="20sp"/>
 
         <Switch

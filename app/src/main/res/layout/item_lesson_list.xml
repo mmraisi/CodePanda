@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#494949"
-            android:text="Introduction to the course"
+            android:text="@string/course_title"
             android:textSize="20sp"
             android:layout_marginBottom="5dp"/>
         <TextView
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#494949"
-            android:text="Length: 12 min"
+            android:text="@string/course_duration"
             android:textSize="16sp"/>
 
     </LinearLayout>

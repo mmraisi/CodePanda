@@ -11,7 +11,7 @@
         android:id="@+id/tv_welcome_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome back, Peter"
+        android:text="@string/welcome_back_name"
         android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="#F16F64"
@@ -25,7 +25,7 @@
         android:id="@+id/tv_complete_percentage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="You have completed 25% of the course"
+        android:text="@string/completed_classes_desc"
         android:textAlignment="center"
         android:textSize="22sp"
         android:textColor="#494949"
@@ -43,7 +43,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lesson completed: "
+            android:text="@string/lessons_completed_desc"
             android:textSize="22sp"
             android:textColor="#494949"
             />
@@ -52,7 +52,7 @@
             android:id="@+id/tv_completed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2"
+            android:text="@string/lessons_completed_value"
             android:textSize="22sp"
             android:textColor="#494949"
             />
@@ -68,7 +68,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lesson remaining: "
+            android:text="@string/lessons_remaining"
             android:textSize="22sp"
             android:textColor="#494949"
             />
@@ -77,7 +77,7 @@
             android:id="@+id/tv_remaining"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2"
+            android:text="@string/lessons_remaining_value"
             android:textSize="22sp"
             android:textColor="#494949"
             />
@@ -87,7 +87,7 @@
         android:id="@+id/btn_continue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CONTINUE"
+        android:text="@string/btn_continue"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_gravity="center"
@@ -101,7 +101,7 @@
         android:id="@+id/tv_delete_all"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="Delete all data and reset"
+        android:text="@string/delete_all_data_and_reset"
         android:textSize="20sp"
         android:textColor="#F22716"
         android:layout_gravity="center"

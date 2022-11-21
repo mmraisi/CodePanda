@@ -29,6 +29,8 @@ class DataSource {
 
     var selectedLessonPosition:Int? = null
 
+    var username:String = ""
+
 
     // put any functions / operations you want to perform on data in the singleton here
 

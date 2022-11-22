@@ -17,4 +17,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="EditTextTheme">
+        <item name="colorControlNormal">#F16F64</item>
+    </style>
 </resources>

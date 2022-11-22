@@ -4,7 +4,9 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.test.project_g10.databinding.ActivityLessonDetailBinding
 import java.io.Serializable
 
@@ -52,6 +54,10 @@ class LessonDetailActivity : AppCompatActivity() {
                 val notesFromUser = binding.edtNotes.text.toString()
 
                 if(notesFromUser.isNotBlank()){
+                    if (binding.tvNotesError.isVisible) {
+                        binding.tvNotesError.visibility = View.GONE
+                        binding.tvNotesError.text = ""
+                    }
                     selectedLesson.notes = notesFromUser
                     addNotesToPrefs()
                     t?.cancel()
@@ -63,13 +69,8 @@ class LessonDetailActivity : AppCompatActivity() {
                     t?.show()
                 }
                 else{
-                    t?.cancel()
-                    t = Toast.makeText(
-                        this@LessonDetailActivity,
-                        "Note is empty",
-                        Toast.LENGTH_SHORT
-                    )
-                    t?.show()
+                    binding.tvNotesError.isVisible = true
+                    binding.tvNotesError.text = "Note is empty"
                 }
             }
 

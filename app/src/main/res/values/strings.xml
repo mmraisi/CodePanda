@@ -8,7 +8,7 @@
     <string name="btn_continue">CONTINUE</string>
     <string name="welcome_back_name">Welcome back, Peter</string>
     <string name="completed_classes_desc">You have completed 25% of the course</string>
-    <string name="lessons_completed_desc">Lesson completed:</string>
+    <string name="lessons_completed_desc">Lessons completed:</string>
     <string name="lessons_completed_value">2</string>
     <string name="lessons_remaining">Lessons remaining:</string>
     <string name="lessons_remaining_value">2</string>

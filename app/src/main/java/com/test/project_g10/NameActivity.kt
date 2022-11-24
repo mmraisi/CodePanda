@@ -42,12 +42,6 @@ class NameActivity : AppCompatActivity() {
 
 
         }
-
-        Log.d(TAG, "onStart:  pressed")
-        if(checkIfNameExists()){
-            val intent = Intent(this, WelcomeScreenActivity::class.java)
-            startActivity(intent)
-        }
     }
 
     private fun validateUsername(name:String):Boolean {
@@ -69,17 +63,6 @@ class NameActivity : AppCompatActivity() {
             putString(resources.getString(R.string.PREFS_USERNAME), username) // key value pair
             apply() // async action
         }
-    }
-
-    private fun checkIfNameExists():Boolean {
-        return if (sharedPrefs.contains(resources.getString(R.string.PREFS_USERNAME))) {
-            val username = sharedPrefs.getString(resources.getString(R.string.PREFS_USERNAME), "")
-            username?.isNotBlank() ?: false
-
-        } else{
-            false
-        }
-
     }
 
     override fun onBackPressed() {

@@ -45,7 +45,7 @@ class WelcomeScreenActivity : AppCompatActivity() {
 
         //Calculate percentage of completed classes
         val completedPercentage = (100 / totalClass) * (numberOfCompletedClasses)
-        binding.tvCompletePercentage.setText("${resources.getString(R.string.you_have_completed)} $completedPercentage% ${resources.getString(R.string.of_the_course)}")
+        binding.tvCompletePercentage.text = "${resources.getString(R.string.you_have_completed)} $completedPercentage% ${resources.getString(R.string.of_the_course)}"
 
         //Set completed classes
         binding.tvCompleted.text = numberOfCompletedClasses.toString()
